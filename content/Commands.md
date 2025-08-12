@@ -1,7 +1,13 @@
 Sync:
 ```
 
-npx quartz sync --no-pull
+npx quartz sync
 
 ```
 
+Push:
+```
+
+npx quartz sync --no-pull
+
+```
