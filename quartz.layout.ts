@@ -38,7 +38,18 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      filterFn: (node) => {
+        const slug = node.data?.slug ?? ""
+        const name = node.displayName.toLowerCase()
+
+        const isMediaFolder =
+          node.isFolder &&
+          (name === "media" || slug.startsWith("media/"))
+
+        return !isMediaFolder
+      },
+    }),
   ],
   right: [
     Component.Graph(),
@@ -62,7 +73,18 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      filterFn: (node) => {
+        const slug = node.data?.slug ?? ""
+        const name = node.displayName.toLowerCase()
+
+        const isMediaFolder =
+          node.isFolder &&
+          (name === "media" || slug.startsWith("media/"))
+
+        return !isMediaFolder
+      },
+    }),
   ],
   right: [],
 }
