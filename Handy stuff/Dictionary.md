@@ -1,0 +1,10 @@
+
+| Name                   | Description                                                                                                                                                                                                     |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Spoofing               | Threat action aimed at accessing and use of another user’s credentials, such as username and password.                                                                                                          |
+| Tampering              | Threat action intending to maliciously change or modify persistent data, such as records in a database, and the alteration of data in transit between two computers over an open network, such as the Internet. |
+| Repudiation            | Threat action aimed at performing prohibited operations in a system that lacks the ability to trace the operations.                                                                                             |
+| Information Disclosure | Threat action intending to read a file that one was not granted access to, or to read data in transit.                                                                                                          |
+| Denial of service      | Threat action attempting to deny access to valid users, such as by making a web server temporarily unavailable or unusable.                                                                                     |
+| Elevation of privilege | Threat action intending to gain privileged access to resources in order to gain unauthorized access to information or to compromise a system.                                                                   |
+|                        |                                                                                                                                                                                                                 |

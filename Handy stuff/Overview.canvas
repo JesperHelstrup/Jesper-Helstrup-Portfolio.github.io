@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"2d7e0fdfb1720db6","x":-440,"y":-680,"width":700,"height":660,"type":"file","file":"Handy stuff/Dictionary.md"},
+		{"id":"8bf25fe040b74628","x":360,"y":-680,"width":600,"height":660,"type":"file","file":"content/Projects/Project Parking App/Topics/Stuff I've heard mentioned.md"}
+	],
+	"edges":[]
+}

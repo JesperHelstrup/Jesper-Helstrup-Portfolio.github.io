@@ -1,4 +1,12 @@
+---
+Links:
+  - https://owasp.org/www-community/Threat_Modeling_Process#stride
+Videos:
+  - https://www.youtube.com/watch?v=rEnJYNkUde0
+---
+
 ### Spoofing
+
 
 ### Tampering
 
