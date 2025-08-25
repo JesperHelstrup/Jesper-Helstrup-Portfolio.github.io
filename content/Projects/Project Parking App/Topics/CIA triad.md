@@ -1,0 +1,12 @@
+## Confidentiality
+---
+
+---
+## Integrity
+---
+
+---
+## Availability
+---
+
+---
