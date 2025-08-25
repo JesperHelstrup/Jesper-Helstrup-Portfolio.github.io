@@ -10,34 +10,40 @@ Videos:
 
 Desired property: Authenticity
 
+Threat Definition:
 Threat action aimed at accessing and use of another user’s credentials, such as username and password.
 ### Tampering
 
 Desired property: Integrity
 
+Threat Definition:
 Threat action intending to maliciously change or modify persistent data, such as records in a database, and the alteration of data in transit between two computers over an open network, such as the Internet.
 ### Repudiation
 
 Desired property: Non-repudiability
 
+Threat Definition:
 Threat action aimed at performing prohibited operations in a system that lacks the ability to trace the operations.
 
 ### Info Disclosure
 
 Desired property: Confidentiality
 
+Threat Definition:
 Threat action intending to read a file that one was not granted access to, or to read data in transit.
 
 ### Denial
 
 Desired property: Availability
 
+Threat Definition:
 Threat action attempting to deny access to valid users, such as by making a web server temporarily unavailable or unusable.
 
 ### Elevation
 
 Desired property: Authorization
 
+Threat Definition:
 Threat action intending to gain privileged access to resources in order to gain unauthorized access to information or to compromise a system.
 
 ### Examples
