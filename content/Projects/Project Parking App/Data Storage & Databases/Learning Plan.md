@@ -1,5 +1,5 @@
 ### Week 38
-[[Week 38 Learnings]]
+[[Week 38 DS]]
 - Learn: Schemas, roles, privileges.
 - Learn: SERIAL vs IDENTITY, sequences.
 - Learn: Native types (arrays, enums, JSON/JSONB).
@@ -7,7 +7,7 @@
 #### Tasks
 - [x] Screenshot of your Postgres schema + sample JSONB insert.
 - [ ] Write-up: “Schemas vs Databases in Postgres – how they compare to MSSQL.”
-- [ ] Reflection: BYTEA vs file paths for images – pros & cons.
+- [x] Reflection: BYTEA vs file paths for images – pros & cons.
 
 ### Week 39
 - Learn: Index types (B-Tree, Hash, GIN, BRIN).
