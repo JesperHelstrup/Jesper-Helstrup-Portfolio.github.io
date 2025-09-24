@@ -30,15 +30,15 @@ Even more so, it allows for flexible data, and can help keep non-uniformed struc
 jsonb stores the data in a decomposed format, which also allows indexing and more efficient querying. 
 ### Tasks
 
-Screenshots:
+#### Screenshots
 
 ![[Screenshot 2025-09-24 142939.png]]
 ![[Screenshot 2025-09-24 142925.png]]
 
-Write-up:
+#### Write-up
 
 
-Reflection:
+#### Reflection
 BYTEA vs file paths for images
 
 BYTEA:
