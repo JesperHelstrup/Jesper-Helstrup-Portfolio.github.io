@@ -9,7 +9,7 @@ Roles allow the database to limit access to groups of users. Without roles, you'
 #### Privileges
 Privileges is what a user can do in the database. The schema might determine that "common_user" has access to the "cars" table, but privileges define what the user can do, like using SELECT, INSERT, UPDATE or DELETE, to mention a few. 
 
-#### ERIAL
+#### SERIAL
 Serial is an older way of managing identity of rows in a table. It creates a persistent sequence object that manages giving out unique numbers for each row created. It's PostgreSQL-specific.
 The issue with using serial is that the sequence doesn't get removed automatically when you drop the associated table, meaning you could potentially have lots of these staying around if creating/deleting is done often. This might not be a huge problem, but even so, it's messy. 
 
