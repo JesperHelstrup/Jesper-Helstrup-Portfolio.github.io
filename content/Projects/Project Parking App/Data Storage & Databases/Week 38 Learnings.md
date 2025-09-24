@@ -1,5 +1,6 @@
-Schemas:
+### Learnings
 
+Schemas:
 The purpose of schemas is to define the layout of the database in different ways. A schema defines what the tables of the database looks like, and can present the data stored in the database differently based on which schema is used. I can be imagined as different designs and ways to organize the same data. I can also be used to block access to data, like the "common_user" role might only be able to see "public" schema, which doesnt have all the tables of the "admin" schema.
 
 Roles:
@@ -24,4 +25,12 @@ Arrays:
 Enums:
 
 JSON/JSONB:
+
+### Tasks
+
+Screenshots:
+![[Screenshot 2025-09-24 142939.png]]
+![[Screenshot 2025-09-24 142925.png]]
+
+Write-up:
 

@@ -1,10 +1,11 @@
 ### Week 38
+[[Week 38 Learnings]]
 - Learn: Schemas, roles, privileges.
 - Learn: SERIAL vs IDENTITY, sequences.
 - Learn: Native types (arrays, enums, JSON/JSONB).
 - Hands-on: create a schema `parking`, with a `scans` table that uses JSONB for flexible metadata.
 #### Tasks
-- [ ] Screenshot of your Postgres schema + sample JSONB insert.
+- [x] Screenshot of your Postgres schema + sample JSONB insert.
 - [ ] Write-up: “Schemas vs Databases in Postgres – how they compare to MSSQL.”
 - [ ] Reflection: BYTEA vs file paths for images – pros & cons.
 
