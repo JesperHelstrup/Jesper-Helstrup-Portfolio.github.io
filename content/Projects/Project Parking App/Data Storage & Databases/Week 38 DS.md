@@ -31,6 +31,7 @@ jsonb stores the data in a decomposed format, which also allows indexing and mor
 ### Tasks
 
 Screenshots:
+
 ![[Screenshot 2025-09-24 142939.png]]
 ![[Screenshot 2025-09-24 142925.png]]
 
