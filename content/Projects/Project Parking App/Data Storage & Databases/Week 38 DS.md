@@ -39,28 +39,30 @@ jsonb stores the data in a decomposed format, which also allows indexing and mor
 
 
 #### Reflection
+
 BYTEA vs file paths for images
 
-BYTEA:
-pros:
+##### BYTEA
+###### pros
 * Allow the data to be stored in the table, removing the need for external storage solution.
 * Images are included in the databases backup solution.
 * No need for extra setup to send images, they can be pulled straight from the database.
 * Easier permissions, can be managed with roles and privileges too.
 * Better transactional integrity.
-cons:
+###### cons
 - inefficient/slow read/write
 - Bloats the database
 - Limited scalability
 
-file paths:
-pros:
+##### file paths
+###### pros
 - More efficient storage
 - scales better
 - keeps the database small and light
 - More features that help performance, like image previews and range requests
 - Can use different access tiers if stored in cloud.
-cons:
+
+###### cons
 - risk of broken links if images are deleted/moved
 - risk of reference to wrong image
 - need for extra backup solution
