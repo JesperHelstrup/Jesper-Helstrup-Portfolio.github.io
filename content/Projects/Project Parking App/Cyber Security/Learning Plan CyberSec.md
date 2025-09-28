@@ -1,11 +1,15 @@
 ### Week 38
+
 - Learn: Encryption basics (symmetric vs asymmetric).
-- Hands-on: encrypt & decrypt a file with OpenSSL.
+- Hands-on: Encrypt & decrypt data using .NET’s `Aes` (symmetric) and sign/verify using `RSA` or `ECDsa` (asymmetric).
 - Research: What’s the role of encryption in protecting database backups?
+
 #### Tasks
-- [ ] Demo: encrypt a file with OpenSSL and show the command + decrypted output.
-- [ ] Short note: symmetric vs asymmetric encryption – when to use each.
-- [ ] Mini reflection: risks of leaving Postgres backups unencrypted.
+
+- [ ] Demo: write a small C# console program that encrypts and decrypts a text file with `Aes` and show the before/after.
+- [ ]  Demo: write C# code to generate an RSA key pair, sign a “parking report” string, and verify the signature.
+- [ ]  Short note: symmetric vs asymmetric encryption – when to use each.
+- [ ]  Mini reflection: risks of leaving Postgres backups unencrypted.
 
 ### Week 39
 - Learn: Authentication vs Authorization (RBAC, JWT, OAuth2).
