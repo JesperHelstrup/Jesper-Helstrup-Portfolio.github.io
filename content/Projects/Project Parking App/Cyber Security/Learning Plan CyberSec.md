@@ -1,9 +1,7 @@
 ### Week 38
 
 - Learn: Encryption basics (symmetric vs asymmetric).
-- Hands-on: Encrypt & decrypt data using .NET’s `Aes` (symmetric) and sign/verify using `RSA` or `ECDsa` (asymmetric).
 - Research: What’s the role of encryption in protecting database backups?
-
 #### Tasks
 
 - [ ] Demo: write a small C# console program that encrypts and decrypts a text file with `Aes` and show the before/after.
