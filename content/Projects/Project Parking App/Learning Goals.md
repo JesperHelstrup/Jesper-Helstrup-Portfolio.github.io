@@ -1,6 +1,6 @@
 ## Cyber Security
 
-### Knowledge – The student has knowledge of:
+### Knowledge
 
 - Principles of symmetric and asymmetric encryption demonstrated through OpenSSL.
 - The purpose and structure of private/public key pairs and their role in secure communication.
@@ -12,7 +12,7 @@
 - Risks associated with transmitting sensitive data (images, geodata) and ways to reduce exposure.
 - How digital signatures conceptually ensure data authenticity (although not implemented).
 
-### Skills – The student can:
+### Skills
 
 - Generate and manage key pairs for encryption tasks using OpenSSL.
 - Encrypt and decrypt data using symmetric and asymmetric methods in a test/demo environment.
@@ -23,7 +23,7 @@
 - Document and explain secure-data workflows for the parking-app prototype.
 - Incorporate basic secure coding patterns based on real-world project needs (e.g., avoiding manual SQL strings).
 
-### Competencies – The student can:
+### Competencies
 
 - Evaluate which security mechanisms are necessary for protecting images, GPS data, and user actions in the app.
 - Design secure data flows for scanning, storing, and transmitting evidence in the parking-app project.
@@ -34,7 +34,7 @@
 
 ## Data Storage / Databases
 
-### Knowledge – The student has knowledge of:
+### Knowledge
 
 - Fundamental relational database concepts relevant to the parking-app domain.
 - Entity Framework Core concepts, including models, relationships, and migrations.
@@ -46,7 +46,7 @@
 - Basic considerations around storing large files (images vs. metadata).
 - How backend services interact with relational databases in modularized architectures.
 
-### Skills – The student can:
+### Skills
 
 - Use EF Core migrations to create and update database structures.
 - Model domain objects (scans, locations, timestamps) as relational entities with correct relationships.
@@ -57,7 +57,7 @@
 - Document database structures and decisions for the project portfolio.
 - Integrate a relational backend into a modular system while maintaining separation between layers.
 
-### Competencies – The student can:
+### Competencies
 
 - Design and justify relational data structures that support the parking-app’s needs (history, documentation, scanning events).
 - Evaluate trade-offs between storing data in relational tables vs. file storage (images, PDFs).
