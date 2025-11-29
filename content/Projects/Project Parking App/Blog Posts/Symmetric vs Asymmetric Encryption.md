@@ -17,7 +17,7 @@ Two examples helped me:
 
 Learning these two approaches gave me a good idea for how real-world systems protect sensitive files, communication, and stored data.
 
-### What i built
+### What I built
 
 To explore the technologies hands-on, I implemented small AES and RSA demos in C#.  
 These weren’t meant to be part of our production code — they were learning experiments to help me understand how the encryption process actually works.
@@ -116,7 +116,7 @@ This demo showed me:
 - How only the original private key holder can decrypt
 
 This is the foundation for secure key exchange.
-### What i learned
+### What I learned
 
 AES and RSA solve different problems.
 - **AES** → great for encrypting _large_ data (photos, payloads, logs)
