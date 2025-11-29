@@ -1,4 +1,4 @@
-- [ ] Hashing in C# With BCrypt
+- [x] Hashing in C# With BCrypt
 - [ ] JWT Authentication & Token Rotation
 - [ ] Protecting Against SQL Injection Using EF Core
 - [ ] Relational Data Modeling With EF Core
