@@ -1,0 +1,10 @@
+- [ ] Hashing in C# With BCrypt
+- [ ] JWT Authentication & Token Rotation
+- [ ] Protecting Against SQL Injection Using EF Core
+- [ ] Relational Data Modeling With EF Core
+- [ ] Transactions and Unit of Work Through EF Core
+- [ ] Storing Images in Databases vs External Storage
+- [x] Symmetric vs Asymmetric Encryption
+- [ ] Securing API Communication With HTTPS/TLS
+- [ ] Designing a Secure Data Flow for a Parking Enforcement App
+- [ ] Digital Signatures for Evidence PDFs
