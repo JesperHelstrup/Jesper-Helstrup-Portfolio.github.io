@@ -39,7 +39,7 @@ The server just verifies signatures — no state stored.
 - **Tokens must expire** - Long-lived JWTs are dangerous, so you need refresh tokens / rotation.
 - **A bit more setup compared to .NET Identity** - But still manageable.
 
-
+I decided to go with JWT, mainly for the scaleability and the stateless design. It also seemed to be more suggested online and even though it required more setup, thats just extra learning for me.
 ### What I built
 
 We ended up splitting the authentication logic across two services:
@@ -163,11 +163,28 @@ This is the recommended pattern from the OWASP guidelines.
 The model includes everything we need to track validity:
 
 ~~~
-public DateTime? RevokedUtc { get; set; }
-public string? ReplacedByToken { get; set; }
+public sealed class RefreshToken
 
-public bool IsActive => RevokedUtc is null && DateTime.UtcNow < ExpiresUtc;
+{
+	public Guid Id { get; set; } = Guid.NewGuid();
+	
+	public Guid UserId { get; set; }
+	
+	public string Token { get; set; } = default!;
+	
+	public DateTime ExpiresUtc { get; set; }
+	
+	public DateTime CreatedUtc { get; set; } = DateTime.UtcNow;
+	
+	public string? CreatedByIp { get; set; }
+	
+	public DateTime? RevokedUtc { get; set; }
+	
+	public string? ReplacedByToken { get; set; }
+	
+	public bool IsActive => RevokedUtc is null && DateTime.UtcNow < ExpiresUtc;
 
+}
 ~~~
 
 The `IsActive` helper keeps the AuthService clean:
@@ -210,4 +227,55 @@ Once this is configured, every `[Authorize]` endpoint now requires a valid acces
 
 ### What I learned
 
-placeholder
+This was definitely one of the heavier topics for me, mostly because there are so many little pieces that all rely on each other.  
+But after working through it, I finally started to understand what’s actually going on behind the scenes when a modern app logs a user in.
+
+The process essentially goes something like this:
+- User logs in with its 
+
+
+---
+text for inspiration for "What i learned":
+
+This was definitely one of the heavier topics for me, mostly because there are so many little pieces that all rely on each other.  
+But after working through it, I finally started to understand what’s actually going on behind the scenes when a modern app logs a user in.
+
+First thing I learned is that **a login system isn’t just “check password → done.”**  
+There’s a whole little ecosystem involved:
+
+- creating the JWT
+    
+- configuring issuer, audience, lifespan
+    
+- signing it correctly
+    
+- validating it in middleware
+    
+- issuing and storing refresh tokens
+    
+- revoking/rotating those tokens
+    
+- tracking which token replaced which
+    
+- returning everything to the client
+    
+- handling the refresh flow securely
+    
+
+Once I saw how all these parts fit together, JWTs suddenly made a lot more sense.
+
+I also learned why **refresh tokens are even a thing**.  
+Before this, I thought “why not just make the JWT last longer?” But that turns out to be terrible practice.  
+Short-lived access tokens + long-lived refresh tokens is what actually keeps the system safe.  
+And rotation was another thing I didn’t know existed — but now it makes complete sense.  
+If someone steals a refresh token, rotation makes that stolen token useless the moment it’s used.
+
+Another thing that clicked for me was how **claims** work.  
+I knew JWTs contained data, but I didn’t fully get how that data gets into the token and how the downstream API reads it.  
+After implementing it, the idea of embedding things like `UserId` and `Role` inside the token feels really natural.
+
+Finally, setting up the ASP.NET validation pipeline taught me how picky JWT validation actually is.  
+The middleware checks _everything_ — issuer, audience, the signing key, expiration — and rejects anything even slightly off.  
+It gave me a good appreciation for how easy it is to accidentally misconfigure an authentication flow.
+
+Even though I definitely had help building this part, I still feel like I came out of it with a much stronger understanding of how real-world authentication works — not just the “hello world” version.
