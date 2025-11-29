@@ -2,10 +2,10 @@
 
 placeholder
 
-### What i built
+### What I built
 
 placeholder
 
-### What i learned
+### What I learned
 
 placeholder
