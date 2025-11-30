@@ -1,7 +1,7 @@
 
 - [x] Hashing in C# With BCrypt
 - [x] JWT Authentication & Token Rotation
-- [ ] Protecting Against SQL Injection Using EF Core
+- [x] Protecting Against SQL Injection Using EF Core
 - [ ] Relational Data Modeling With EF Core
 - [ ] Transactions and Unit of Work Through EF Core
 - [ ] Storing Images in Databases vs External Storage

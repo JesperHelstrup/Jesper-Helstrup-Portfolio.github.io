@@ -10,8 +10,10 @@ For this project, I didn’t want **controllers** or **services** building SQL s
 
 The goal wasn’t to “trust EF Core blindly”, but to **use it in the way it’s designed to prevent SQL injection**: parameterized queries, no string-concatenated SQL, and strongly-typed queries end-to-end.
 
+Disclaimer: Whenever i refer to HTTP in this blog post, it's because the current version allows for HTTP, the final product would have been locked to only using HTTPS. 
 ### What I built
-#### 1. Registering EF Core and repositories in Program.cs
+#### Registering EF Core and repositories in Program.cs
+
 ~~~
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("AppDb"))
@@ -24,13 +26,13 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 
 ~~~
 
-By registering `AppDbContext` with `AddDbContext`, each HTTP request gets its own **scoped** DbContext. All repositories receive that same context, so every query is built through EF Core.
+By registering `AppDbContext` like this, each HTTP request gets its own **scoped** DbContext. All repositories receive that same context, so every query is built through EF Core.
 
 Because everything goes through LINQ, **EF composes parameterized SQL under the hood**. The controllers never see SQL; they just work with services and repositories.
 
 ---
 
-#### 2. A generic repository that only uses EF Core APIs
+#### A generic repository that only uses EF Core APIs
 
 ~~~
 public Task<T?> GetByIdAsync(Guid id, CancellationToken ct = default) =>
@@ -47,7 +49,7 @@ Those methods generate queries where the input values are sent as **parameters**
 
 ---
 
-#### 3. Querying related data safely in ReportRepository
+#### Querying related data safely in ReportRepository
 
 ~~~
 public Task<Report?> GetWithScansAsync(Guid id, CancellationToken ct = default)
@@ -68,7 +70,7 @@ EF Core translates this into SQL and treats the `id` value as a parameter. Even 
 
 ---
 
-#### 4. Safe lookups for refresh tokens
+#### Safe lookups for refresh tokens
 
 ~~~
 public Task<RefreshToken?> GetAsync(string token) =>
@@ -89,7 +91,7 @@ Again, no string concatenation, no chance for `"'; DROP TABLE RefreshTokens; --"
 
 ---
 
-#### 5. Input constraints and validation at the controller level
+#### Input constraints and validation at the controller level
 
 ~~~
 [HttpGet("{id:guid}")]
@@ -127,4 +129,10 @@ Overall, the pattern is:
 A natural extension is that seeding and migrations (`DbSeeder`) also use the same `AppDbContext`, so even administrative code benefits from the same protections.
 ### What I learned
 
-placeholder
+Because I’ve worked with EF Core in several previous projects, this part of the system didn’t introduce anything fundamentally new for me. It was mostly a chance to apply what I already knew in a more security-focused context.
+
+The main thing this reinforced is that SQL injection prevention is really just about avoiding string-built SQL. As long as you stick to LINQ and let EF Core handle parameter binding, you automatically get stronger protection.
+
+If I was using another backend framework without the same guarantees, I would have had to put more time into designing the equivalent protection myself or found another tool. But in .NET, EF Core already gives you what you need — you just have to use it correctly.
+
+Overall, this part was mostly practice and consolidation rather than new learning, but still important given how common SQL injection attacks are.
