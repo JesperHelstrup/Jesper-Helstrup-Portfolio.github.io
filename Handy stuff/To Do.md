@@ -3,7 +3,7 @@
 - [x] JWT Authentication & Token Rotation
 - [x] Protecting Against SQL Injection Using EF Core
 - [ ] Relational Data Modeling With EF Core
-- [ ] Transactions and Unit of Work Through EF Core
+- [x] Transactions and Unit of Work Through EF Core
 - [ ] Storing Images in Databases vs External Storage
 - [x] Symmetric vs Asymmetric Encryption
 - [ ] Securing API Communication With HTTPS/TLS
