@@ -1,5 +1,5 @@
-# **Cyber Security
-
+# **Cyber Security**
+#CyberSec 
 ## **Knowledge – The student has knowledge of:**
 
 - The conceptual difference between hashing and encryption, including when each technique is appropriate.
@@ -9,7 +9,6 @@
 - How SQL injection attacks occur, and why parameterized queries and ORM frameworks mitigate this risk.
 
 ---
-
 ## **Skills – The student can:**
 
 - Implement secure password storage by applying BCrypt hashing and verification within backend services.
@@ -19,7 +18,6 @@
 - Apply principles of secure communication by describing how HTTPS/TLS should be integrated into a backend architecture.
 
 ---
-
 ## **Competencies – The student can:**
 
 - Assess security risks related to storing and transmitting sensitive data such as license plates, images, and GPS coordinates, and propose appropriate mitigations.
@@ -29,9 +27,8 @@
 - Independently acquire new security techniques and apply them to project-specific challenges in backend development.
 
 ---
-
-# **Data Storage / Databases
-
+# **Data Storage / Databases**
+#Data 
 ## **Knowledge – The student has knowledge of:**
 
 - The structure of relational databases, including tables, relationships, constraints, and delete behaviors.
@@ -41,7 +38,6 @@
 - The role of repository and Unit of Work patterns in structuring data access within a modular backend architecture.
 
 ---
-
 ## **Skills – The student can:**
 
 - Implement and configure data models in EF Core, including relationships, constraints, and entity configuration.
@@ -51,7 +47,6 @@
 - Develop and justify proposed storage strategies for large files based on system requirements.
 
 ---
-
 ## **Competencies – The student can:**
 
 - Evaluate how data-model and storage decisions impact system performance, maintainability, and data integrity.
