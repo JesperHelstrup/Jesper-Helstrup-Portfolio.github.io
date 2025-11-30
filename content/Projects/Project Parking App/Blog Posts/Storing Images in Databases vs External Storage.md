@@ -102,7 +102,7 @@ public async Task<Guid> AddScanWithImageAsync(
 }
 ~~~
 
-When we want to load an image in the app, we only return one image, that way we never load more than we absolutely need.
+When we want to load an image in the app, we only return one image, that way we never load more into the app than we absolutely need.
 
 ~~~
 public async Task<ScanImageDto> GetScanImageAsync(
