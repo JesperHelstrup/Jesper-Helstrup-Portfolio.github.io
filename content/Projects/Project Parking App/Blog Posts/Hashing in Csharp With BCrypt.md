@@ -1,4 +1,7 @@
-#CyberSec
+---
+tags:
+  - CyberSec
+---
 ### Purpose of the Implementation
 
 During research, I came across multiple sources explaining that **hashing passwords** is a fundamental security practice. The whole point is that the real password is **never stored anywhere**, not even by the backend developer or the database administrator.
