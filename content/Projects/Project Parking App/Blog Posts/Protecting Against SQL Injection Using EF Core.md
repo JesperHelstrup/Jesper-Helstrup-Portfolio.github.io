@@ -1,3 +1,4 @@
+#CyberSec #Data
 ### Purpose of the Implementation
 
 SQL Injection is one of those classic vulnerabilities that never really dies. Any time you build something that talks to a database, you have to assume that user input is hostile until proven otherwise.
