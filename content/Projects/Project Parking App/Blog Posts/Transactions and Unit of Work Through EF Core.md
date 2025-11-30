@@ -1,3 +1,7 @@
+---
+tags:
+  - Data
+---
 ### Purpose of the Implementation
 
 Even though EF Core already handles transactions internally, I still wanted a clean way to coordinate database changes across different repositories. The goal wasn’t to reinvent EF’s transaction system, but to give the application a single point where changes are committed. That keeps the code predictable and avoids situations where half-finished writes slip into the database.
