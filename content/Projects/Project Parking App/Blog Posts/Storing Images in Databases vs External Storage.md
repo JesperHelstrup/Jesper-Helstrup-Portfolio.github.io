@@ -1,4 +1,7 @@
-#Data 
+---
+tags:
+  - Data
+---
 ### Purpose of the Implementation
 
 For this project we needed a way to attach photos to scans so they could be included as part of the documentation. The main question was **where** to store those images:
@@ -65,29 +68,6 @@ b.Entity<Scan>()
 
 ~~~
 
-Migration:
-~~~
-migrationBuilder.CreateTable(
-    name: "ScanImages",
-    columns: table => new
-    {
-        ScanId = table.Column<Guid>(type: "uuid", nullable: false),
-        ImageData = table.Column<byte[]>(type: "bytea", nullable: false),
-        ContentType = table.Column<string>(type: "text", nullable: false),
-        CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-    },
-    constraints: table =>
-    {
-        table.PrimaryKey("PK_ScanImages", x => x.ScanId);
-        table.ForeignKey(
-            name: "FK_ScanImages_Scans_ScanId",
-            column: x => x.ScanId,
-            principalTable: "Scans",
-            principalColumn: "ScanId",
-            onDelete: ReferentialAction.Cascade);
-    });
-~~~
-
 This gives us:
 
 - a dedicated `ScanImages` table keyed by `ScanId`,
@@ -99,6 +79,8 @@ Persisting an image now happens inside the same database transaction as the scan
 ---
 
 #### Service methods that attach images without forcing them into every query
+
+`AddScanWithImageAsync` maps the incoming DTO to a `ScanImage`, attaches it to the `Scan`, and saves everything in a single `SaveChangesAsync` call.
 
 ~~~
 public async Task<Guid> AddScanWithImageAsync(
@@ -118,22 +100,53 @@ public async Task<Guid> AddScanWithImageAsync(
 
     return scan.ScanId;
 }
+~~~
 
+When we want to load an image in the app, we only return one image, that way we never load more than we absolutely need.
+
+~~~
 public async Task<ScanImageDto> GetScanImageAsync(
     Guid reportId,
     Guid scanId,
     CancellationToken ct = default)
 {
-    // ... fetch only the image for that scan
+	var report = await _reportRepo.GetWithScansAndImagesAsync(reportId, ct)
+	?? throw new KeyNotFoundException($"Report with ID {reportId} not found.");
+	
+	var scan = report.Scans.FirstOrDefault(s => s.ScanId == scanId)
+	?? throw new KeyNotFoundException($"Scan with ID {scanId} not found in report {reportId}.");
+	
+	var image = scan.ScanImage
+	?? throw new KeyNotFoundException($"Scan with ID {scanId} does not have an image.");
+
+return _mapper.Map<ScanImageDto>(image);
 }
 ~~~
 
-`AddScanWithImageAsync` maps the incoming DTO to a `ScanImage`, attaches it to the `Scan`, and saves everything in a single `SaveChangesAsync` call.
+so listing scans is always fast, and downloading a single image is an intentional, separate call.
 
 At the same time, we still have separate methods/endpoints for:
 
-- listing scans **without** images (fast, small payloads), and
-- fetching **only the image** when needed.
+~~~
+public interface IReportService : IBaseCrudService<ReportDto>
+
+{
+	Task<IReadOnlyList<ScanDto>> ListScansAsync(Guid reportId, CancellationToken ct = default);
+	
+	Task<Guid> AddScanAsync(Guid reportId, ScanDto dto, CancellationToken ct = default);
+	
+	Task UpdateScanAsync(Guid reportId, Guid scanId, ScanDto dto, CancellationToken ct = default);
+	
+	Task DeleteScanAsync(Guid reportId, Guid scanId, CancellationToken ct = default);
+	
+	Task<Guid> AddScanWithImageAsync(Guid reportId, ScanDto scanDto, ScanImageDto imageDto, CancellationToken ct = default);
+	
+	Task UpdateScanAndImageAsync(Guid reportId, Guid scanId, ScanDto scanDto, ScanImageDto imageDto, CancellationToken ct = default);
+	
+	Task<ScanImageDto> GetScanImageAsync(Guid reportId, Guid scanId, CancellationToken ct = default);
+
+}
+~~~
 
 So we get the convenience of blob storage in the DB, but we’re not forced to load megabytes of image data every time the client just wants a list of scans.
 
