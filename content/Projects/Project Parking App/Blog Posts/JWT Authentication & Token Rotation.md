@@ -16,7 +16,6 @@ Server-side sessions are the classic approach — the server stores an active se
 **Cons:
 
 - **Backend must store session state** - Every login adds memory usage.
-- **Doesn’t fit APIs well** - Mobile apps and REST APIs don’t naturally use browser cookies.
 - **Scaling becomes annoying** - If you add more backend instances, you need sticky sessions or distributed caching.
 - **Harder to revoke / rotate gracefully** - Session invalidation is manual and messy.
 
@@ -27,7 +26,7 @@ The server just verifies signatures — no state stored.
 
 **Pros:
 
-- **Stateless** - Backend doesn’t track who’s logged in.
+- **Stateless** - Backend doesn’t track who’s logged in. (We'll use refresh tokens, so our solution will be semi-stateless)
 - **Perfect for mobile apps + APIs** - Tokens travel with requests, no cookies needed.
 - **Easy to scale horizontally** - Any server instance can validate tokens without syncing session data.
 - **Supports roles & claims** - You can embed useful info right inside the token.
@@ -228,54 +227,19 @@ Once this is configured, every `[Authorize]` endpoint now requires a valid acces
 ### What I learned
 
 This was definitely one of the heavier topics for me, mostly because there are so many little pieces that all rely on each other.  
-But after working through it, I finally started to understand what’s actually going on behind the scenes when a modern app logs a user in.
+But after working through it, I feel like i got a good grasp on what needs to happen.
 
 The process essentially goes something like this:
-- User logs in with its 
+- User logs in with its username and password
+- The authentication service checks if the user exists
+- It checks if the password they provided, when hashed, matches the stored password hash
+- It creates an access token, an expiration time for that token and a refresh token
+- It sends all that back to the user and the user is now logged in
+Then, whenever the app tries to call on an endpoint with [Authorize], this happens:
+- As part of the payload, the app sends its access token
+- The jwt middleware checks if the access token is still valid
+- If the token has expired, the app gets a 401 error
+- The app then sends its refresh token to the auth refresh endpoint to get a new access token
+- if the refresh token has also expired, the user has to log in again. Otherwise the app will be issued a new access token.
 
-
----
-text for inspiration for "What i learned":
-
-This was definitely one of the heavier topics for me, mostly because there are so many little pieces that all rely on each other.  
-But after working through it, I finally started to understand what’s actually going on behind the scenes when a modern app logs a user in.
-
-First thing I learned is that **a login system isn’t just “check password → done.”**  
-There’s a whole little ecosystem involved:
-
-- creating the JWT
-    
-- configuring issuer, audience, lifespan
-    
-- signing it correctly
-    
-- validating it in middleware
-    
-- issuing and storing refresh tokens
-    
-- revoking/rotating those tokens
-    
-- tracking which token replaced which
-    
-- returning everything to the client
-    
-- handling the refresh flow securely
-    
-
-Once I saw how all these parts fit together, JWTs suddenly made a lot more sense.
-
-I also learned why **refresh tokens are even a thing**.  
-Before this, I thought “why not just make the JWT last longer?” But that turns out to be terrible practice.  
-Short-lived access tokens + long-lived refresh tokens is what actually keeps the system safe.  
-And rotation was another thing I didn’t know existed — but now it makes complete sense.  
-If someone steals a refresh token, rotation makes that stolen token useless the moment it’s used.
-
-Another thing that clicked for me was how **claims** work.  
-I knew JWTs contained data, but I didn’t fully get how that data gets into the token and how the downstream API reads it.  
-After implementing it, the idea of embedding things like `UserId` and `Role` inside the token feels really natural.
-
-Finally, setting up the ASP.NET validation pipeline taught me how picky JWT validation actually is.  
-The middleware checks _everything_ — issuer, audience, the signing key, expiration — and rejects anything even slightly off.  
-It gave me a good appreciation for how easy it is to accidentally misconfigure an authentication flow.
-
-Even though I definitely had help building this part, I still feel like I came out of it with a much stronger understanding of how real-world authentication works — not just the “hello world” version.
+This whole process took a lot of help from external resources, including AI, but it was definetely worth it. I don't think I would have been able to build something this complex without that help. 
