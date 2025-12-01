@@ -20,7 +20,7 @@
 ---
 ## **Competencies – The student can:**
 
-- Assess security risks related to storing and transmitting sensitive data such as license plates, images, and GPS coordinates, and propose appropriate mitigations.
+- Assess security risks related to storing and transmitting GDPR-sensitive data such as license plates, images, and GPS coordinates, and propose appropriate mitigations.
 - Design secure data flows that combine hashing, token-based authentication, encrypted transport, and planned at-rest encryption.
 - Reflect on current security limitations in the prototype and articulate well-reasoned improvement strategies (e.g., endpoint authorization, TLS enforcement, report signing).
 - Communicate security-related design decisions to stakeholders and explain how they support evidence integrity and data protection.
