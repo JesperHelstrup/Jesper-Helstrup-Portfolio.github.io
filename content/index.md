@@ -10,3 +10,6 @@ My name is Jesper, I'm a soon to be AP graduate in Computer Science from UCL Ode
 **Frameworks:** .NET, Blazor, Entity Framework Core  
 **Tools:** Visual Studio, VS Code, Rider, Docker, Git, PostgreSQL, SQLite  
 **Other:** Unit testing (MSTest/Moq), Scrum, Kanban, Gantt, Linux
+
+### Projects
+[[Project Parking App/]]
