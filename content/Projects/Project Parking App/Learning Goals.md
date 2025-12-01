@@ -1,67 +1,56 @@
-## Cyber Security
+# **Cyber Security** (18 ETCS)
+#CyberSec 
+## **Knowledge – The student has knowledge of:**
 
-### Knowledge
+- The conceptual difference between hashing and encryption, including when each technique is appropriate.
+- The principles behind JWT-based authentication, including the structure of tokens, claims, expirations, and trust relationships.
+- The purpose of HTTPS/TLS and how encrypted transport protects data in transit.
+- The core differences between symmetric and asymmetric encryption and their typical use cases.
+- How SQL injection attacks occur, and why parameterized queries and ORM frameworks mitigate this risk.
 
-- Principles of symmetric and asymmetric encryption demonstrated through OpenSSL.
-- The purpose and structure of private/public key pairs and their role in secure communication.
-- Hashing techniques in C# and why hashing differs from encryption.
-- JWT-based authentication and how tokens represent identity and authorization.
-- The security guarantees of HTTPS/TLS in protecting data-in-transit.
-- How EF Core parameterization mitigates SQL injection vulnerabilities.
-- The role of secure API access when interacting with external services (e.g., Motorregistret).
-- Risks associated with transmitting sensitive data (images, geodata) and ways to reduce exposure.
-- How digital signatures conceptually ensure data authenticity (although not implemented).
+---
+## **Skills – The student can:**
 
-### Skills
+- Implement secure password storage by applying BCrypt hashing and verification within backend services.
+- Configure and apply JWT authentication, including token generation, validation, and refresh token rotation.
+- Use secure data-access patterns in EF Core to prevent SQL injection vulnerabilities.
+- Document and propose the application of symmetric and asymmetric encryption for protecting images and geolocation data.
+- Apply principles of secure communication by describing how HTTPS/TLS should be integrated into a backend architecture.
 
-- Generate and manage key pairs for encryption tasks using OpenSSL.
-- Encrypt and decrypt data using symmetric and asymmetric methods in a test/demo environment.
-- Implement hashing in C# services to securely store sensitive values.
-- Integrate JWT handling into backend flows to validate identity and protect endpoints.
-- Apply HTTPS/TLS requirements when consuming external APIs and ensure secure communication channels.
-- Use structured thinking to assess attack surfaces such as insecure transport, stolen tokens, or leaked keys.
-- Document and explain secure-data workflows for the parking-app prototype.
-- Incorporate basic secure coding patterns based on real-world project needs (e.g., avoiding manual SQL strings).
+---
+## **Competencies – The student can:**
 
-### Competencies
+- Assess security risks related to storing and transmitting sensitive data such as license plates, images, and GPS coordinates, and propose appropriate mitigations.
+- Design secure data flows that combine hashing, token-based authentication, encrypted transport, and planned at-rest encryption.
+- Reflect on current security limitations in the prototype and articulate well-reasoned improvement strategies (e.g., endpoint authorization, TLS enforcement, report signing).
+- Communicate security-related design decisions to stakeholders and explain how they support evidence integrity and data protection.
+- Independently acquire new security techniques and apply them to project-specific challenges in backend development.
 
-- Evaluate which security mechanisms are necessary for protecting images, GPS data, and user actions in the app.
-- Design secure data flows for scanning, storing, and transmitting evidence in the parking-app project.
-- Choose appropriate authentication mechanisms (JWT) for API communication in a modular architecture.
-- Reflect on encryption, hashing, and transport security in relation to real system requirements.
-- Communicate security implications and decisions clearly in project documentation for PO and examiner.
-- Independently learn and apply new security techniques when project constraints demand it.
+---
+# **Data Storage / Databases** (12 ETCS)
+#Data 
+## **Knowledge – The student has knowledge of:**
 
-## Data Storage / Databases
+- The structure of relational databases, including tables, relationships, constraints, and delete behaviors.
+- The principles behind EF Core’s code-first approach and how migrations are used to manage schema evolution.
+- ACID properties and how transactions support data consistency and reliability.
+- Key considerations when comparing database storage of large files with external file/blob storage solutions.
+- The role of repository and Unit of Work patterns in structuring data access within a modular backend architecture.
 
-### Knowledge
+---
+## **Skills – The student can:**
 
-- Fundamental relational database concepts relevant to the parking-app domain.
-- Entity Framework Core concepts, including models, relationships, and migrations.
-- How EF Core translates C# entities into tables, foreign keys, and constraints.
-- How transactions work in relational databases and how EF Core handles them under the hood.
-- The role of ACID principles in ensuring reliability of stored scans (plate, time, location).
-- The difference between code-first and database-first approaches in EF Core.
-- How relational schemas support later auditing and documentation (history of scans, user actions).
-- Basic considerations around storing large files (images vs. metadata).
-- How backend services interact with relational databases in modularized architectures.
+- Implement and configure data models in EF Core, including relationships, constraints, and entity configuration.
+- Use EF Core migrations to create and evolve a relational database over the course of the project.
+- Perform CRUD operations through repository patterns and maintain consistency through transaction boundaries.
+- Document the data model and explain how it supports project functionality such as scans, reports, and image handling.
+- Develop and justify proposed storage strategies for large files based on system requirements.
 
-### Skills
+---
+## **Competencies – The student can:**
 
-- Use EF Core migrations to create and update database structures.
-- Model domain objects (scans, locations, timestamps) as relational entities with correct relationships.
-- Perform CRUD operations through EF Core without writing raw SQL.
-- Use transactions implicitly via SaveChanges and understand how rollbacks occur.
-- Validate data integrity through constraints defined in the C# domain layer.
-- Describe how queries are generated by EF Core and how this affects performance.
-- Document database structures and decisions for the project portfolio.
-- Integrate a relational backend into a modular system while maintaining separation between layers.
-
-### Competencies
-
-- Design and justify relational data structures that support the parking-app’s needs (history, documentation, scanning events).
-- Evaluate trade-offs between storing data in relational tables vs. file storage (images, PDFs).
-- Reflect on how EF Core migrations and modeling support long-term maintainability.
-- Relate database design decisions to cybersecurity concerns (e.g., storing hashed values, securing sensitive fields).
-- Apply best practices for structuring backend data access layers in a modular monolith.
-- Communicate database choices clearly in project documentation and during exam defense.
+- Evaluate how data-model and storage decisions impact system performance, maintainability, and data integrity.
+- Design improvements to the current schema and storage approach, such as introducing audit trails, history tracking, or external file storage.
+- Reflect on how EF Core and repository-based access contribute to modularity, testability, and scalability.
+- Relate database design decisions to broader system needs, including documentation, evidence handling, and secure data processing.
+- Independently learn new database concepts and apply them to practical backend solutions as the system scales or changes.
