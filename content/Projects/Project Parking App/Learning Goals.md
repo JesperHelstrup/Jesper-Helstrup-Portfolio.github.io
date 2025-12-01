@@ -1,4 +1,4 @@
-# **Cyber Security** (18 ETCS)
+# **Cyber Security** (18 ECTS)
 #CyberSec 
 ## **Knowledge – The student has knowledge of:**
 
@@ -27,7 +27,7 @@
 - Independently acquire new security techniques and apply them to project-specific challenges in backend development.
 
 ---
-# **Data Storage / Databases** (12 ETCS)
+# **Data Storage / Databases** (12 ECTS)
 #Data 
 ## **Knowledge – The student has knowledge of:**
 
