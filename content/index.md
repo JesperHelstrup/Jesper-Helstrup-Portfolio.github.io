@@ -12,4 +12,4 @@ My name is Jesper, I'm a soon to be AP graduate in Computer Science from UCL Ode
 **Other:** Unit testing (MSTest/Moq), Scrum, Kanban, Gantt, Linux
 
 ### Projects
-[Project Parking App](Projects/Project Parking App/)
+[Project Parking App]([[Projects/Project Parking App/]])
