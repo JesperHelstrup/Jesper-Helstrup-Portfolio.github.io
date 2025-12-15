@@ -87,7 +87,7 @@ See: [[Storing Images in Databases vs External Storage]]
 When listing all cars for a report, only metadata is loaded.  
 This avoids sending large blobs unless they’re specifically requested.
 
-➡ See: [[Storing Images in Databases vs External Storage]]
+See: [[Storing Images in Databases vs External Storage]]
 
 ---
 
