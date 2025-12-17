@@ -11,13 +11,13 @@ First i needed to decide what made the most sense for the project. The two main 
 #### Server-Side Sessions
 Server-side sessions are the classic approach — the server stores an active session for each logged-in user and the client just holds a session cookie.
 
-**Pros:
+Pros:
 
 - **Simple to understand** - Server keeps track of who’s logged in. Easy mental model.
 - **Secure by default** - Cookies + server memory means no signed tokens to tamper with.
 - **Good for traditional web apps** - When the backend and frontend live in the same domain, it works great.
 
-**Cons:
+Cons:
 
 - **Backend must store session state** - Every login adds memory usage.
 - **Scaling becomes annoying** - If you add more backend instances, you need sticky sessions or distributed caching.
@@ -28,7 +28,7 @@ Server-side sessions are the classic approach — the server stores an active se
 JWT (JSON Web Token) pushes the “session” out to the client.  
 The server just verifies signatures — no state stored.
 
-**Pros:
+Pros:
 
 - **Stateless** - Backend doesn’t track who’s logged in. (We'll use refresh tokens, so our solution will be semi-stateless)
 - **Perfect for mobile apps + APIs** - Tokens travel with requests, no cookies needed.
@@ -36,7 +36,7 @@ The server just verifies signatures — no state stored.
 - **Supports roles & claims** - You can embed useful info right inside the token.
 - **Access + refresh token model is clean** - Short-lived access token + long-lived refresh token = modern, secure flow.
 
-**Cons:
+Cons:
 
 - **If you misconfigure or expose the signing key, it’s bad** - But that’s true for any auth system.
 - **Tokens must expire** - Long-lived JWTs are dangerous, so you need refresh tokens / rotation.
